@@ -26,6 +26,8 @@
       <scope>test</scope>
     </dependency>
 
+
+
     <!-- Scala support -->
     <!-- scala-library is needed to run scala code in JVM -->
     <dependency>
@@ -44,6 +46,36 @@
 
   <build>
       <plugins>
+        <!-- disable surefire -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+            <skipTests>true</skipTests>
+          </configuration>
+        </plugin>
+        <!-- enable scalatest -->
+        <plugin>
+          <groupId>org.scalatest</groupId>
+          <artifactId>scalatest-maven-plugin</artifactId>
+          <version>1.0</version>
+          <configuration>
+            <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+            <junitxml>.</junitxml>
+            <filereports>WDF TestSuite.txt</filereports>
+          </configuration>
+          <executions>
+            <execution>
+              <id>test</id>
+              <goals>
+                <goal>test</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+
           <plugin>
               <groupId>org.scala-tools</groupId>
               <artifactId>maven-scala-plugin</artifactId>
