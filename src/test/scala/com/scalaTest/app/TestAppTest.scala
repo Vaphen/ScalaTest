@@ -7,6 +7,7 @@ class TestAppTest extends FlatSpec with Matchers {
     val stack = new Stack[Int]
     stack.push(1)
     stack.push(2)
+    stack.push(3)
     stack.pop() should be (2)
     stack.pop() should be (1)
   }
@@ -14,7 +15,7 @@ class TestAppTest extends FlatSpec with Matchers {
   it should "throw NoSuchElementException if an empty stack is popped" in {
     val emptyStack = new Stack[Int]
     a [NoSuchElementException] should be thrownBy {
-      emptyStack.pop()
+      emptyStack.pop()e
     }
   }
 }
